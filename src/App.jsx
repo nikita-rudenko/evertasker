@@ -1,5 +1,5 @@
 import React from 'react';
-import styled, { createGlobalStyle } from 'styled-components';
+import styled, { ThemeProvider, createGlobalStyle } from 'styled-components';
 
 // Theme
 import { theme } from './theme';
@@ -10,10 +10,12 @@ import TaskList from './containers/TaskList';
 
 function App() {
     return (
-        <AppContainer>
-            <GlobalStyle />
-            <TaskList />
-        </AppContainer>
+        <ThemeProvider theme={theme}>
+            <AppContainerSC>
+                <GlobalStyle />
+                <TaskList />
+            </AppContainerSC>
+        </ThemeProvider>
     );
 }
 
@@ -25,8 +27,8 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-const AppContainer = styled.div`
-	background: ${theme.colors.grey.light};
+const AppContainerSC = styled.div`
+	background: ${props => props.theme.colorWhite};
 	display: flex;
 	justify-content: center;
 	min-height: 100vh;
