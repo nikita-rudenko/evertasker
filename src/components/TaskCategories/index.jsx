@@ -1,29 +1,21 @@
 import React from 'react';
-import styled from 'styled-components';
 
-// Theme
-import { theme } from '../../theme';
 // Components
 import TaskCategory from './TaskCategory';
+// Styled
+import { TaskCategoriesSC } from './style';
 
 
 
 const TaskCategories = () => {
     return (
-        <TaskCategoriesContainer>
+        <TaskCategoriesSC>
             <TaskCategory />
             <TaskCategory />
             <TaskCategory />
             <TaskCategory />
-        </TaskCategoriesContainer>
+        </TaskCategoriesSC>
     );
 };
-
-const TaskCategoriesContainer = styled.div`
-	background: ${theme.colors.white};
-	display: flex;
-	justify-content: space-around;
-	padding: 20px 30px;
-`;
 
 export default TaskCategories;
