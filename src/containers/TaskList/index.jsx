@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 // Theme
-import { theme } from '../../config/theme';
+import { theme } from '../../theme';
 // Components
 import Logo from '../../components/Logo';
 import TaskCategories from '../../components/TaskCategories';

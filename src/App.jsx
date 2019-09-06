@@ -2,7 +2,7 @@ import React from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
 
 // Theme
-import { theme } from './config/theme';
+import { theme } from './theme';
 // Components
 import TaskList from './containers/TaskList';
 
