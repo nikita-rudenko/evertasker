@@ -1,3 +1,8 @@
+export const THEME_VARIANTS = {
+    DARK: 'dark',
+    LIGHT: 'light'
+};
+
 export const theme = {
     colors: {
         white: 'rgb(255, 255, 255)',
@@ -36,5 +41,8 @@ export const theme = {
         normal: '0 8px 8px rgba(0, 0, 0, 0.16), 0 4px 6px rgba(0, 0, 0, 0.18)',
         stronger: '0 10px 20px rgba(0, 0, 0, 0.18), 0 6px 6px rgba(0, 0, 0, 0.22)',
         strongest: '0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.24)'
-    } 
+    },
+    transitions: {
+        bgOnToggleTheme: 'background 0.3s ease'
+    }
 };
