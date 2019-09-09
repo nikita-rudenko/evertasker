@@ -1,17 +1,20 @@
 import styled from 'styled-components';
 
+// Theme helpers
+import { getCurrentThemeColor, getStyleVariable } from '../../theme/helpers';
+
 
 
 export const TaskListContainerSC = styled.div`
-	background: ${({ theme }) => theme.themeColors.tertiary};
+	background: ${getCurrentThemeColor('tertiary')};
 	height: calc(80vh - 180px);
 	overflow-y: auto;
 	padding: 0 20px;
-    transition: ${({ theme }) => theme.transitions.onToggleTheme};
+    transition: ${getStyleVariable('transitions', 'onToggleTheme')};
 
 	
 	&::-webkit-scrollbar-thumb {
-		background: ${({ theme }) => theme.themeColors.secondary};
+		background: ${getCurrentThemeColor('secondary')};
         border-radius: 2px;
 	}
 	

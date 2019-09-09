@@ -3,8 +3,8 @@ import styled, { ThemeProvider, createGlobalStyle } from 'styled-components';
 
 // Contexts
 import { ThemeContext } from './contexts/ThemeContext';
-// Helpers
-import { composeCurrentTheme } from './theme/helper';
+// Theme helpers
+import { composeCurrentTheme, getCurrentThemeColor, getStyleVariable } from './theme/helpers';
 // Components
 import TaskList from './containers/TaskList';
 import ThemeToggler from './components/ThemeToggler';
@@ -46,11 +46,11 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 const AppContainerSC = styled.div`
-    background: ${({ theme }) => theme.themeColors.background};
+    background: ${getCurrentThemeColor('background')};
     display: flex;
     justify-content: center;
     min-height: 100vh;
-    transition: ${({ theme }) => theme.transitions.onToggleTheme};
+    transition: ${getStyleVariable('transitions', 'onToggleTheme')};
     width: 100%;
 `;
 

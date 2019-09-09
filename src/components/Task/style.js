@@ -1,11 +1,14 @@
 import styled from 'styled-components';
 
+// Theme helpers
+import { getStyleVariable } from '../../theme/helpers';
+
 
 
 export const TaskSC = styled.div`
 	align-items: center;
-	background: ${({ theme }) => theme.constColors.taskColor3};
-	box-shadow: ${({ theme }) => theme.boxShadow.lighter};
+	background: ${getStyleVariable('constColors', 'taskColor1')};
+	box-shadow: ${getStyleVariable('boxShadow', 'lighter')};
 	display: flex;
 	height: 140px;
 	justify-content: center;
@@ -14,7 +17,7 @@ export const TaskSC = styled.div`
 	width: 100%;
 	
 	&:hover {
-		box-shadow: ${({ theme }) => theme.boxShadow.normal};
+		box-shadow: ${getStyleVariable('boxShadow', 'normal')};
 		cursor: pointer;
 	}
 `;

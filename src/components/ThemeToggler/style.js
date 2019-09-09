@@ -1,5 +1,8 @@
 import styled from 'styled-components';
 
+// Theme helpers
+import { getStyleVariable, getCurrentThemeColor } from '../../theme/helpers';
+
 
 
 export const ThemeTogglerSC = styled.div`
@@ -11,9 +14,9 @@ export const ThemeTogglerSC = styled.div`
     padding: 10px;
     border-radius: 50%;
     user-select: none;
-    transition: ${({ theme }) => theme.transitions.bgOnToggleTheme};
-    background: ${({ theme }) => theme.themeColors.secondary};
-    box-shadow: ${({ theme }) => theme.boxShadow.stronger};
+    transition: ${getStyleVariable('transitions', 'bgOnToggleTheme')};
+    background: ${getCurrentThemeColor('secondary')};
+    box-shadow: ${getStyleVariable('boxShadow', 'stronger')};
 `;
 
 export const ToggleIconSC = styled.img`
