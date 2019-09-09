@@ -12,7 +12,7 @@ export const ThemeTogglerSC = styled.div`
     border-radius: 50%;
     user-select: none;
     transition: ${({ theme }) => theme.transitions.bgOnToggleTheme};
-    background: ${({ theme, variant }) => variant ? theme.colors.grey.dark : theme.colors.grey.light};
+    background: ${({ theme }) => theme.themeColors.secondary};
     box-shadow: ${({ theme }) => theme.boxShadow.stronger};
 `;
 

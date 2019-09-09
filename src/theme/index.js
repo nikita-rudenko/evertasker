@@ -4,36 +4,14 @@ export const THEME_VARIANTS = {
 };
 
 export const theme = {
-    colors: {
-        white: 'rgb(255, 255, 255)',
-        grey: {
-            light: 'rgb(226, 225, 224)',
-            dark: 'rgb(102, 102, 102)'
-        },
-        blue: {
-            light: 'rgb(218, 232, 252)',
-            dark: 'rgb(108, 142, 191)'
-        },
-        green: {
-            light: 'rgb(213, 232, 212)',
-            dark: 'rgb(130, 179, 102)'
-        },
-        orange: {
-            light: 'rgb(255, 230, 204)',
-            dark: 'rgb(215, 155, 0)'
-        },
-        yellow: {
-            light: 'rgb(255, 242, 204)',
-            dark: 'rgb(214, 182, 86)'
-        },
-        red: {
-            light: 'rgb(248, 206, 204)',
-            dark: 'rgb(184, 84, 80)'
-        },
-        violet: {
-            light: 'rgb(225, 213, 231)',
-            dark: 'rgb(150, 115, 166)'
-        }
+    constColors: {
+        accent: 'rgb(108, 142, 191)',
+        error: 'rgb(248, 206, 204)',
+        task1: 'rgb(255, 242, 204)',
+        task2: 'rgb(213, 232, 212)',
+        task3: 'rgb(255, 230, 204)',
+        task4: 'rgb(218, 232, 252)',
+        task5: 'rgb(225, 213, 231)'
     },
     boxShadow: {
         lightest: '0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.14)',
@@ -43,6 +21,24 @@ export const theme = {
         strongest: '0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.24)'
     },
     transitions: {
-        bgOnToggleTheme: 'background 0.3s ease'
+        onToggleTheme: 'background 0.3s ease'
+    }
+};
+
+export const light = {
+    themeColors: {
+        background: 'rgb(226, 225, 224)',
+        primary: 'rgb(105, 105, 105)',
+        secondary: 'rgb(105, 105, 105)',
+        tertiary: 'rgb(255, 255, 255)'
+    }
+};
+
+export const dark = {
+    themeColors: {
+        background: 'rgb(105, 105, 105)',
+        primary: 'rgb(105, 105, 105)',
+        secondary: 'rgb(255, 255, 255)',
+        tertiary: 'rgb(150, 150, 150)',
     }
 };

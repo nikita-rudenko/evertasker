@@ -3,8 +3,8 @@ import styled, { ThemeProvider, createGlobalStyle } from 'styled-components';
 
 // Contexts
 import { ThemeContext } from './contexts/ThemeContext';
-// Theme
-import { theme, THEME_VARIANTS } from './theme';
+// Helpers
+import { composeCurrentTheme } from './theme/helper';
 // Components
 import TaskList from './containers/TaskList';
 import ThemeToggler from './components/ThemeToggler';
@@ -15,8 +15,8 @@ function App() {
     const [currentTheme] = useContext(ThemeContext);
 
     return (
-        <ThemeProvider theme={theme}>
-            <AppContainerSC variant={currentTheme === THEME_VARIANTS.LIGHT}>
+        <ThemeProvider theme={composeCurrentTheme(currentTheme)}>
+            <AppContainerSC>
                 <GlobalStyle />
                 <ThemeToggler />
                 <TaskList />
@@ -34,12 +34,11 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 const AppContainerSC = styled.div`
-    background: ${({ theme, variant }) =>
-        variant ? theme.colors.colorWhite : theme.colors.grey.dark};
+    background: ${({ theme }) => theme.themeColors.background};
     display: flex;
     justify-content: center;
     min-height: 100vh;
-    transition: ${({ theme }) => theme.transitions.bgOnToggleTheme};
+    transition: ${({ theme }) => theme.transitions.onToggleTheme};
     width: 100%;
 `;
 

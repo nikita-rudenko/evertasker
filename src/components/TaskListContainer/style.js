@@ -3,19 +3,19 @@ import styled from 'styled-components';
 
 
 export const TaskListContainerSC = styled.div`
-	background: ${props => props.theme.colors.white};
+	background: ${({ theme }) => theme.themeColors.tertiary};
 	height: calc(80vh - 180px);
 	overflow-y: auto;
 	padding: 0 20px;
+    transition: ${({ theme }) => theme.transitions.onToggleTheme};
 
 	
 	&::-webkit-scrollbar-thumb {
-		background: ${props => props.theme.colors.grey.dark};
+		background: ${({ theme }) => theme.themeColors.secondary};
         border-radius: 2px;
 	}
 	
 	&::-webkit-scrollbar {
-		background: ${props => props.theme.colors.grey.light};
 		width: 10px;
 	}
 `;
