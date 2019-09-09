@@ -7,7 +7,7 @@ export const ThemeTogglerSC = styled.div`
     cursor: pointer;
     top: 40px;
     right: 60px;
-    width: 40px;
+    width: 60px;
     padding: 10px;
     border-radius: 50%;
     user-select: none;

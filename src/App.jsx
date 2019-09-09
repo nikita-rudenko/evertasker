@@ -26,11 +26,23 @@ function App() {
 }
 
 const GlobalStyle = createGlobalStyle`
-  body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Lato', sans-serif; 
-  }
+    html {
+        font-size: 62.5%;
+        font-family: 'Lato', sans-serif;
+        box-sizing: border-box;
+    }
+    
+    body {
+        margin: 0;
+        padding: 0;
+        position: relative;
+    }
+
+    *,
+    *:after,
+    *:before {
+        box-sizing: inherit;
+    }
 `;
 
 const AppContainerSC = styled.div`
