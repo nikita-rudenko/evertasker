@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 export const TaskSC = styled.div`
 	align-items: center;
-	background: ${({ theme }) => theme.constColors.task3};
+	background: ${({ theme }) => theme.constColors.taskColor3};
 	box-shadow: ${({ theme }) => theme.boxShadow.lighter};
 	display: flex;
 	height: 140px;

@@ -7,11 +7,11 @@ export const theme = {
     constColors: {
         accent: 'rgb(108, 142, 191)',
         error: 'rgb(248, 206, 204)',
-        task1: 'rgb(255, 242, 204)',
-        task2: 'rgb(213, 232, 212)',
-        task3: 'rgb(255, 230, 204)',
-        task4: 'rgb(218, 232, 252)',
-        task5: 'rgb(225, 213, 231)'
+        taskColor1: 'rgb(255, 242, 204)',
+        taskColor2: 'rgb(213, 232, 212)',
+        taskColor3: 'rgb(255, 230, 204)',
+        taskColor4: 'rgb(218, 232, 252)',
+        taskColor5: 'rgb(225, 213, 231)'
     },
     boxShadow: {
         lightest: '0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.14)',
