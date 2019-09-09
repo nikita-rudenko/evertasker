@@ -18,8 +18,12 @@ const ThemeContextProvider = props => {
                 : THEME_VARIANTS.LIGHT
         );
 
+    const state = {
+        theme: [currentTheme, setTheme]
+    };
+    
     return (
-        <ThemeContext.Provider value={[currentTheme, setTheme]}>
+        <ThemeContext.Provider value={state}>
             {props.children}
         </ThemeContext.Provider>
     );

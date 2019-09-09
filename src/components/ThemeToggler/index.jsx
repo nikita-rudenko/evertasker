@@ -13,12 +13,12 @@ import { ThemeTogglerSC, ToggleIconSC } from './style';
 
 
 const ThemeToggler = () => {
-    const [currentTheme, setCurrentTheme] = useContext(ThemeContext);
+    const { theme: [currentTheme, setTheme] } = useContext(ThemeContext);
 
     return (
         <ThemeTogglerSC
             variant={currentTheme === THEME_VARIANTS.LIGHT}
-            onClick={setCurrentTheme}
+            onClick={setTheme}
             title='Toggle theme'
         >
             <ToggleIconSC

@@ -12,7 +12,7 @@ import ThemeToggler from './components/ThemeToggler';
 
 
 function App() {
-    const [currentTheme] = useContext(ThemeContext);
+    const { theme: [currentTheme] } = useContext(ThemeContext);
 
     return (
         <ThemeProvider theme={composeCurrentTheme(currentTheme)}>
