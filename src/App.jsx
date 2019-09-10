@@ -4,22 +4,28 @@ import styled, { ThemeProvider, createGlobalStyle } from 'styled-components';
 // Contexts
 import { ThemeContext } from './contexts/ThemeContext';
 // Theme helpers
-import { composeCurrentTheme, getCurrentThemeColor, getStyleVariable } from './theme/helpers';
+import {
+    composeCurrentTheme,
+    getCurrentThemeColor,
+    getStyleVariable
+} from './theme/helpers';
 // Components
-import TaskList from './containers/TaskList';
+import Sidebar from './containers/Sidebar';
 import ThemeToggler from './components/ThemeToggler';
 
 
 
 function App() {
-    const { theme: [currentTheme] } = useContext(ThemeContext);
+    const {
+        theme: [currentTheme]
+    } = useContext(ThemeContext);
 
     return (
         <ThemeProvider theme={composeCurrentTheme(currentTheme)}>
             <AppContainerSC>
                 <GlobalStyle />
                 <ThemeToggler />
-                <TaskList />
+                <Sidebar />
             </AppContainerSC>
         </ThemeProvider>
     );

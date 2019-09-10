@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
 
 // Contexts
 import { ThemeContextProvider } from './contexts/ThemeContext';
@@ -7,13 +8,17 @@ import { ThemeContextProvider } from './contexts/ThemeContext';
 import App from './App';
 // Service worker
 import * as serviceWorker from './serviceWorker';
+// Store
+import { store } from './state/store';
 
 
 
 ReactDOM.render(
-    <ThemeContextProvider>
-        <App />
-    </ThemeContextProvider>,
+    <Provider store={store}>
+        <ThemeContextProvider>
+            <App />
+        </ThemeContextProvider>
+    </Provider>,
     document.getElementById('root')
 );
 
