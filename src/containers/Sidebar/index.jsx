@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { useSelector, useDispatch, shallowEqual } from 'react-redux';
 
 // Components
@@ -12,7 +13,7 @@ import { actions } from '../../state/ducks/tasks';
 
 
 
-const Sidebar = () => {
+const Sidebar = ({ isFullView, openedTaskId, changeOpenedTaskId }) => {
     const dispatch = useDispatch();
     const { tasksData, error, isLoading } = useSelector(
         state => state.tasks,
@@ -24,7 +25,7 @@ const Sidebar = () => {
     }, [dispatch]);
 
     return (
-        <SidebarSC>
+        <SidebarSC isFullView={isFullView}>
             <TaskListHeaderSC>
                 <LogoContainerSC>
                     <Logo />
@@ -35,9 +36,17 @@ const Sidebar = () => {
                 tasks={tasksData}
                 isLoading={isLoading}
                 error={error}
+                openedTaskId={openedTaskId}
+                changeOpenedTaskId={changeOpenedTaskId}
             />
         </SidebarSC>
     );
+};
+
+Sidebar.propTypes = {
+    openedTaskId: PropTypes.number,
+    changeOpenedTaskId: PropTypes.func.isRequired,
+    isFullView: PropTypes.bool.isRequired
 };
 
 export default Sidebar;

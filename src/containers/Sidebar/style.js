@@ -6,11 +6,12 @@ import { getCurrentThemeColor, getStyleVariable } from '../../theme/helpers';
 
 
 export const SidebarSC = styled.div`
+    transition: width 0.3s ease;
     background: ${getCurrentThemeColor('primary')};
     box-shadow: ${getStyleVariable('boxShadow', 'strongest')};
     height: 80vh;
     margin-top: 100px;
-    width: 600px;
+    width: ${({ isFullView }) => isFullView ? '470px' : '600px'};
 `;
 
 export const TaskListHeaderSC = styled.div`
