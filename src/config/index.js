@@ -1,2 +1,2 @@
 export const BASE_URL =
-    'https://my-json-server.typicode.com/nick-rudenko/evertasker-server';
+    'https://cors-anywhere.herokuapp.com/https://evertasker-server.glitch.me/api/v1';
