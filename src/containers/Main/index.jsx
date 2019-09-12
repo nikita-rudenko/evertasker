@@ -18,7 +18,7 @@ const Main = ({ isFullView, openedTaskId }) => {
 
 Main.propTypes = {
     isFullView: PropTypes.bool.isRequired,
-    openedTaskId: PropTypes.number
+    openedTaskId: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
 };
 
 export default Main;

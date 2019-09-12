@@ -18,7 +18,7 @@ const DetailsView = ({ openedTaskId, isFullView }) => {
     );
 
     const renderTask = () => {
-        if (!isLoading && Number.isInteger(openedTaskId)) {
+        if (!isLoading && openedTaskId !== null) {
             const task = tasksData.find(task => task.id === openedTaskId);
 
             return (
@@ -37,7 +37,7 @@ const DetailsView = ({ openedTaskId, isFullView }) => {
 };
 
 DetailsView.propTypes = {
-    openedTaskId: PropTypes.number
+    openedTaskId: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
 };
 
 export default DetailsView;

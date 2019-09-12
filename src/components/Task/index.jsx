@@ -16,7 +16,7 @@ const Task = ({ changeOpenedTaskId, id, title }) => {
 
 Task.propTypes = {
     changeOpenedTaskId: PropTypes.func.isRequired,
-    id: PropTypes.number,
+    id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     title: PropTypes.string
 };
 
