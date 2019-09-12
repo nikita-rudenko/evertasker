@@ -9,7 +9,7 @@ export const DetailsViewBodySC = styled.div`
 	background: ${getStyleVariable('constColors', 'taskColor1')};
 	display: flex;
 	flex-direction: column;
-	height: calc(100% - 80px - 40px);
+	height: calc(100% - 80px - 60px);
 	overflow-y: auto;
 	padding: 20px 40px;
 	position: relative;
