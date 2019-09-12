@@ -5,14 +5,15 @@ import PropTypes from 'prop-types';
 import { TaskListContainerSC } from './style';
 // Components
 import Task from '../Task';
+import Loading from '../Loading';
 
 
 
 const TaskListContainer = ({ tasks, isLoading, changeOpenedTaskId }) => {
     return (
         <TaskListContainerSC>
-            {!isLoading && Array.isArray(tasks)
-                ? tasks.map(task => (
+            {!isLoading && Array.isArray(tasks) ? (
+                tasks.map(task => (
                     <Task
                         changeOpenedTaskId={changeOpenedTaskId}
                         key={task.id}
@@ -20,7 +21,9 @@ const TaskListContainer = ({ tasks, isLoading, changeOpenedTaskId }) => {
                         title={task.title}
                     />
                 ))
-                : null}
+            ) : (
+                <Loading />
+            )}
         </TaskListContainerSC>
     );
 };
