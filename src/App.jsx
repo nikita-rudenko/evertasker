@@ -22,11 +22,9 @@ function App() {
     } = useContext(ThemeContext);
 
     const [openedTaskId, setOpenedTaskId] = useState(null);
-    const changeOpenedTaskId = id =>
-        setOpenedTaskId(() => {
-            return id;
-        });
-    const isFullView = Number.isInteger(openedTaskId);
+    const changeOpenedTaskId = id => setOpenedTaskId(id);
+
+    const isFullView = openedTaskId !== null;
 
     return (
         <ThemeProvider theme={composeCurrentTheme(currentTheme)}>
