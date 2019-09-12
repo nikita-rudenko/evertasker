@@ -19,14 +19,12 @@ const DetailsView = ({ openedTaskId, isFullView }) => {
 
     const renderTask = () => {
         if (!isLoading && Number.isInteger(openedTaskId)) {
-            const task = tasksData.filter(
-                task => task.id === openedTaskId && task
-            );
+            const task = tasksData.find(task => task.id === openedTaskId);
 
             return (
                 <DetailsViewSC isFullView={isFullView}>
-                    <DetailsViewHeader title={task[0].title} />
-                    <DetailsViewBody description={task[0].description} />
+                    <DetailsViewHeader title={task.title} />
+                    <DetailsViewBody task={task} />
                     <DetailsViewFooter />
                 </DetailsViewSC>
             );
