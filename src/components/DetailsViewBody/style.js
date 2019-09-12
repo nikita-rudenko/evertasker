@@ -38,14 +38,16 @@ export const TaskSubheadingSC = styled.div`
 export const TagsSC = styled.ul`
 	align-items: center;
 	display: flex;
+	flex-wrap: wrap;
 	list-style: none;
+	max-width: 500px;
 	padding: 0;
 	& > li {
 		background: ${getStyleVariable('constColors', 'accent')};
 		border-radius: 4px;
 		color: #fff;
 		font-size: 14px;
-		margin: 0 2px;
+		margin: 6px 2px;
 		padding: 4px;
 	}
 `;
@@ -76,7 +78,6 @@ export const MetaItemSC = styled.span`
 export const DescriptionSC = styled.div`
 	margin-top: 20px;
 	max-width: 500px;
-	min-height: 200px;
 `;
 
 export const DescriptionTextSC = styled.p`
@@ -93,7 +94,6 @@ export const TodoListSC = styled.ul`
 	}
 `;
 
-
 // ASSIGNEES
 export const AssigneesSC = styled.div`
 	margin-top: auto;
@@ -102,6 +102,7 @@ export const AssigneesSC = styled.div`
 export const AssigneesListSC = styled.ul`
 	align-items: center;
 	display: flex;
+	flex-wrap: wrap;
 	list-style: none;
 	padding-left: 0;
 	& > li {
@@ -109,7 +110,7 @@ export const AssigneesListSC = styled.ul`
 		border-radius: 4px;
 		color: #fff;
 		font-size: 14px;
-		margin: 10px 2px;
+		margin: 6px 2px;
 		padding: 4px;
 	}
 `;
