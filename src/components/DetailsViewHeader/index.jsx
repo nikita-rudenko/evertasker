@@ -1,10 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+// Styled
+import { DetailsViewHeaderSC, TaskTitleSC } from './style';
+
 
 
 const DetailsViewHeader = ({ title }) => {
-    return <div>{title}</div>;
+    return (
+        <DetailsViewHeaderSC>
+            <TaskTitleSC>{title}</TaskTitleSC>
+        </DetailsViewHeaderSC>
+    );
 };
 
 DetailsViewHeader.propTypes = {
