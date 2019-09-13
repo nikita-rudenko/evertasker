@@ -6,11 +6,17 @@ import { TaskSC } from './style';
 
 
 
-const Task = ({ title }) => {
-    return <TaskSC>{title}</TaskSC>;
+const Task = ({ changeOpenedTaskId, id, title }) => {
+    return (
+        <TaskSC data-id={id} onClick={() => changeOpenedTaskId(id)}>
+            {title}
+        </TaskSC>
+    );
 };
 
 Task.propTypes = {
+    changeOpenedTaskId: PropTypes.func.isRequired,
+    id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     title: PropTypes.string
 };
 

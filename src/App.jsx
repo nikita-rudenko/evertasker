@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import styled, { ThemeProvider, createGlobalStyle } from 'styled-components';
 
 // Contexts
@@ -11,6 +11,7 @@ import {
 } from './theme/helpers';
 // Components
 import Sidebar from './containers/Sidebar';
+import Main from './containers/Main';
 import ThemeToggler from './components/ThemeToggler';
 
 
@@ -20,12 +21,22 @@ function App() {
         theme: [currentTheme]
     } = useContext(ThemeContext);
 
+    const [openedTaskId, setOpenedTaskId] = useState(null);
+    const changeOpenedTaskId = id => setOpenedTaskId(id);
+
+    const isFullView = openedTaskId !== null;
+
     return (
         <ThemeProvider theme={composeCurrentTheme(currentTheme)}>
             <AppContainerSC>
                 <GlobalStyle />
                 <ThemeToggler />
-                <Sidebar />
+                <Sidebar
+                    isFullView={isFullView}
+                    openedTaskId={openedTaskId}
+                    changeOpenedTaskId={changeOpenedTaskId}
+                />
+                <Main isFullView={isFullView} openedTaskId={openedTaskId} />
             </AppContainerSC>
         </ThemeProvider>
     );
