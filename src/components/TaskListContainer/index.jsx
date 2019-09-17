@@ -9,12 +9,18 @@ import Loading from '../Loading';
 
 
 
-const TaskListContainer = ({ tasks, isLoading, changeOpenedTaskId }) => {
+const TaskListContainer = ({
+    tasks,
+    isLoading,
+    openedTaskId,
+    changeOpenedTaskId
+}) => {
     return (
         <TaskListContainerSC>
             {!isLoading && Array.isArray(tasks) ? (
-                tasks.map((task) => (
+                tasks.map(task => (
                     <Task
+                        openedTaskId={openedTaskId}
                         changeOpenedTaskId={changeOpenedTaskId}
                         key={task.id}
                         task={task}
@@ -31,7 +37,8 @@ TaskListContainer.propTypes = {
     isLoading: PropTypes.bool,
     tasks: PropTypes.arrayOf(PropTypes.object),
     error: PropTypes.object,
-    changeOpenedTaskId: PropTypes.func.isRequired
+    changeOpenedTaskId: PropTypes.func.isRequired,
+    openedTaskId: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
 };
 
 export default TaskListContainer;

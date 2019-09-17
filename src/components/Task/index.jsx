@@ -12,15 +12,20 @@ import Status from '../Status';
 
 const Task = ({
     changeOpenedTaskId,
+    openedTaskId,
     task: { id, tags, todo, title, assignees, status, created }
 }) => {
     return (
-        <TaskSC data-id={id} onClick={() => changeOpenedTaskId(id)}>
+        <TaskSC
+            data-id={id}
+            isOpened={openedTaskId === id}
+            onClick={() => changeOpenedTaskId(id)}
+        >
             <TagsSC>
                 <Tags tags={tags} />
             </TagsSC>
             <StatusSC>
-                <Status status={status}/>
+                <Status status={status} />
             </StatusSC>
             <TitleSC>{title}</TitleSC>
             <TaskInfo assignees={assignees} todo={todo} created={created} />
@@ -30,6 +35,7 @@ const Task = ({
 
 Task.propTypes = {
     changeOpenedTaskId: PropTypes.func.isRequired,
+    openedTaskId: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     tags: PropTypes.arrayOf(PropTypes.string),
     title: PropTypes.string,
