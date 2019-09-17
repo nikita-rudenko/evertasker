@@ -1,15 +1,29 @@
+import { TaskInfo } from './TaskInfo';
 import React from 'react';
 import PropTypes from 'prop-types';
 
 // Styled
-import { TaskSC } from './style';
+import { TaskSC, TitleSC, TagsSC, StatusSC } from './style';
+// Components
+import Tags from '../DetailsViewBody/Tags';
+import Status from '../Status';
 
 
 
-const Task = ({ changeOpenedTaskId, id, title }) => {
+const Task = ({
+    changeOpenedTaskId,
+    task: { id, tags, todo, title, assignees, status, created }
+}) => {
     return (
         <TaskSC data-id={id} onClick={() => changeOpenedTaskId(id)}>
-            {title}
+            <TagsSC>
+                <Tags tags={tags} />
+            </TagsSC>
+            <StatusSC>
+                <Status status={status}/>
+            </StatusSC>
+            <TitleSC>{title}</TitleSC>
+            <TaskInfo assignees={assignees} todo={todo} created={created} />
         </TaskSC>
     );
 };
@@ -17,7 +31,9 @@ const Task = ({ changeOpenedTaskId, id, title }) => {
 Task.propTypes = {
     changeOpenedTaskId: PropTypes.func.isRequired,
     id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-    title: PropTypes.string
+    tags: PropTypes.arrayOf(PropTypes.string),
+    title: PropTypes.string,
+    task: PropTypes.object
 };
 
 export default Task;

@@ -13,12 +13,11 @@ const TaskListContainer = ({ tasks, isLoading, changeOpenedTaskId }) => {
     return (
         <TaskListContainerSC>
             {!isLoading && Array.isArray(tasks) ? (
-                tasks.map(task => (
+                tasks.map((task) => (
                     <Task
                         changeOpenedTaskId={changeOpenedTaskId}
                         key={task.id}
-                        id={task.id}
-                        title={task.title}
+                        task={task}
                     />
                 ))
             ) : (
