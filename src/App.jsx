@@ -3,6 +3,8 @@ import styled, { ThemeProvider, createGlobalStyle } from 'styled-components';
 
 // Contexts
 import { ThemeContext } from './contexts/ThemeContext';
+// Helpers
+import { getFromDataset } from './utils/helpers';
 // Theme helpers
 import {
     composeCurrentTheme,
@@ -22,7 +24,7 @@ function App() {
     } = useContext(ThemeContext);
 
     const [openedTaskId, setOpenedTaskId] = useState(null);
-    const changeOpenedTaskId = id => setOpenedTaskId(id);
+    const changeOpenedTaskId = e => setOpenedTaskId(getFromDataset(e, 'id'));
 
     const isFullView = openedTaskId !== null;
 

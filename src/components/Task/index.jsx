@@ -19,7 +19,7 @@ const Task = ({
         <TaskSC
             data-id={id}
             isOpened={openedTaskId === id}
-            onClick={() => changeOpenedTaskId(id)}
+            onClick={changeOpenedTaskId}
         >
             <TagsSC>
                 <Tags tags={tags} />
