@@ -39,7 +39,7 @@ Task.propTypes = {
     assignees: PropTypes.string,
     changeOpenedTaskId: PropTypes.func.isRequired,
     hasTodo: PropTypes.bool,
-    id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+    id: PropTypes.string,
     isOpened: PropTypes.bool,
     tags: PropTypes.arrayOf(PropTypes.string),
     task: PropTypes.object,

@@ -44,7 +44,7 @@ const Sidebar = ({ isFullView, openedTaskId, changeOpenedTaskId }) => {
 };
 
 Sidebar.propTypes = {
-    openedTaskId: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+    openedTaskId: PropTypes.string,
     changeOpenedTaskId: PropTypes.func.isRequired,
     isFullView: PropTypes.bool.isRequired
 };

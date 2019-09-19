@@ -51,7 +51,7 @@ TaskListContainer.propTypes = {
     tasks: PropTypes.arrayOf(PropTypes.object),
     error: PropTypes.object,
     changeOpenedTaskId: PropTypes.func.isRequired,
-    openedTaskId: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+    openedTaskId: PropTypes.string
 };
 
 export default TaskListContainer;

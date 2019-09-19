@@ -37,7 +37,7 @@ const DetailsView = ({ openedTaskId, isFullView }) => {
 };
 
 DetailsView.propTypes = {
-    openedTaskId: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+    openedTaskId: PropTypes.string
 };
 
 export default DetailsView;
