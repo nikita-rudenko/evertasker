@@ -18,19 +18,15 @@ import {
 export function TaskInfo({ todo, assignees, created }) {
     return (
         <TaskInfoSC>
-            {todo ? (
+            {todo && (
                 <TaskInfoItemSC title='Has todo'>
                     <IconSC src={clipboard} />
                 </TaskInfoItemSC>
-            ) : null}
+            )}
 
             <TaskInfoItemSC title='Assignees'>
                 <IconSC src={user} />
-                {`${assignees[0]}${
-                    assignees.length - 1 > 0
-                        ? ` and ${assignees.length - 1} others`
-                        : ''
-                }`}
+                {assignees}
             </TaskInfoItemSC>
 
             <TaskInfoItemRightSC>
@@ -42,7 +38,7 @@ export function TaskInfo({ todo, assignees, created }) {
 }
 
 TaskInfo.propTypes = {
-    assignees: PropTypes.arrayOf(PropTypes.string),
+    assignees: PropTypes.string,
     created: PropTypes.string,
     todo: PropTypes.arrayOf(PropTypes.string)
 };

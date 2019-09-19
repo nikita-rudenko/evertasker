@@ -18,14 +18,27 @@ const TaskListContainer = ({
     return (
         <TaskListContainerSC>
             {!isLoading && Array.isArray(tasks) ? (
-                tasks.map(task => (
-                    <Task
-                        openedTaskId={openedTaskId}
-                        changeOpenedTaskId={changeOpenedTaskId}
-                        key={task.id}
-                        task={task}
-                    />
-                ))
+                tasks.map(task => {
+                    const { id, todo, assignees } = task;
+
+                    const assigneesStr = `${assignees[0]}${
+                        assignees.length - 1 > 0
+                            ? ` and ${assignees.length - 1} others`
+                            : ''
+                    }`;
+
+                    return (
+                        <Task
+                            openedTaskId={openedTaskId}
+                            changeOpenedTaskId={changeOpenedTaskId}
+                            key={id}
+                            hasTodo={todo !== undefined}
+                            assignees={assigneesStr}
+                            isOpened={openedTaskId === id}
+                            task={task}
+                        />
+                    );
+                })
             ) : (
                 <Loading />
             )}

@@ -12,15 +12,13 @@ import Status from '../Status';
 
 const Task = ({
     changeOpenedTaskId,
-    openedTaskId,
-    task: { id, tags, todo, title, assignees, status, created }
+    isOpened,
+    hasTodo,
+    assignees,
+    task: { id, tags, title, status, created }
 }) => {
     return (
-        <TaskSC
-            data-id={id}
-            isOpened={openedTaskId === id}
-            onClick={changeOpenedTaskId}
-        >
+        <TaskSC data-id={id} isOpened={isOpened} onClick={changeOpenedTaskId}>
             <TagsSC>
                 <Tags tags={tags} />
             </TagsSC>
@@ -28,18 +26,24 @@ const Task = ({
                 <Status status={status} />
             </StatusSC>
             <TitleSC>{title}</TitleSC>
-            <TaskInfo assignees={assignees} todo={todo} created={created} />
+            <TaskInfo
+                assignees={assignees}
+                hasTodo={hasTodo}
+                created={created}
+            />
         </TaskSC>
     );
 };
 
 Task.propTypes = {
+    assignees: PropTypes.string,
     changeOpenedTaskId: PropTypes.func.isRequired,
-    openedTaskId: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+    hasTodo: PropTypes.bool,
     id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+    isOpened: PropTypes.bool,
     tags: PropTypes.arrayOf(PropTypes.string),
-    title: PropTypes.string,
-    task: PropTypes.object
+    task: PropTypes.object,
+    title: PropTypes.string
 };
 
 export default Task;
