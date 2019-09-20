@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import { shallowEqual, useDispatch, useSelector } from 'react-redux';
+import React from 'react';
 import PropTypes from 'prop-types';
 
-// Actions
-import { actions } from '../../state/ducks/tasks';
+// Custom hooks
+import useGetTaskList from '../../hooks/useGetTaskList';
 // Styled
 import { SidebarSC, TaskListHeaderSC, LogoContainerSC } from './style';
 // Components
@@ -14,20 +13,11 @@ import TaskListContainer from '../../components/TaskListContainer';
 
 
 const Sidebar = ({ isFullView, openedTaskId, changeOpenedTaskId }) => {
-    const dispatch = useDispatch();
-    const { tasksData, isLoading, error } = useSelector(
-        state => state.tasks,
-        shallowEqual
-    );
-
-    const [currentCategory, setCurrentCategory] = useState(0);
-
-    const changeCategory = selectedCategory =>
-        setCurrentCategory(Number(selectedCategory));
-
-    useEffect(() => {
-        dispatch(actions.getTasks(currentCategory));
-    }, [currentCategory, dispatch]);
+    const [
+        { tasksData, isLoading, error },
+        currentCategory,
+        changeCategory
+    ] = useGetTaskList();
 
     return (
         <SidebarSC isFullView={isFullView}>
