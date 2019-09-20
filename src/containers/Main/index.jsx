@@ -5,13 +5,19 @@ import PropTypes from 'prop-types';
 import { MainSC } from './style';
 // Components
 import DetailsView from '../DetailsView';
+import AnimatedMain from './AnimatedMain';
 
 
 
 const Main = ({ isFullView, openedTaskId }) => {
     return (
         <MainSC isFullView={isFullView}>
-            <DetailsView openedTaskId={openedTaskId} isFullView={isFullView} />
+            <AnimatedMain trigger={isFullView} timeout={500}>
+                <DetailsView
+                    openedTaskId={openedTaskId}
+                    isFullView={isFullView}
+                />
+            </AnimatedMain>
         </MainSC>
     );
 };
