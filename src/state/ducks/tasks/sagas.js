@@ -7,12 +7,19 @@ import { getTasks } from '../../../api/tasks';
 
 
 
-function* doGetTasks() {
+function* doGetTasks({ currentCategory }) {
     try {
-        const result = yield call(getTasks);
+        const { data } = yield call(getTasks);
+
         yield put({
             type: types.GET_TASKS_SUCCESS,
-            payload: result
+            payload: data.tasks.filter(task => {
+                if (currentCategory === task.status || currentCategory === 0) {
+                    return task;
+                } else {
+                    return null;
+                }
+            })
         });
     } catch (error) {
         yield put({

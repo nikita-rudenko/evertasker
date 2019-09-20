@@ -8,6 +8,7 @@ import { DetailsViewSC } from './style';
 import DetailsViewBody from '../../components/DetailsViewBody';
 import DetailsViewHeader from '../../components/DetailsViewHeader';
 import DetailsViewFooter from '../../components/DetailsViewFooter';
+import Loading from '../../components/Loading';
 
 
 
@@ -20,6 +21,8 @@ const DetailsView = ({ openedTaskId, isFullView }) => {
     const renderTask = () => {
         if (!isLoading && openedTaskId !== null) {
             const task = tasksData.find(task => task.id === openedTaskId);
+
+            if (!task) return <Loading />;
 
             return (
                 <DetailsViewSC isFullView={isFullView}>

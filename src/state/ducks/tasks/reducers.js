@@ -19,7 +19,7 @@ export const reducer = (state = initialState, { type, payload }) => {
     case types.GET_TASKS_SUCCESS:
         return {
             ...state,
-            tasksData: payload.data.tasks,
+            tasksData: payload,
             isLoading: false
         };
 
