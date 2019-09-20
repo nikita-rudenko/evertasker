@@ -6,6 +6,7 @@ import { TaskListContainerSC } from './style';
 // Components
 import Task from '../Task';
 import Loading from '../Loading';
+import Message from '../Message';
 
 
 
@@ -40,7 +41,7 @@ const TaskListContainer = ({
                 );
             });
         } else if (!isLoading && !tasks.length && !isPristine) {
-            return <h2>No tasks</h2>;
+            return <Message>No tasks</Message>;
         } else {
             return <Loading />;
         }

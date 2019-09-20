@@ -9,6 +9,7 @@ import DetailsViewBody from '../../components/DetailsViewBody';
 import DetailsViewHeader from '../../components/DetailsViewHeader';
 import DetailsViewFooter from '../../components/DetailsViewFooter';
 import Loading from '../../components/Loading';
+import Message from '../../components/Message';
 
 
 
@@ -30,7 +31,7 @@ const DetailsView = ({ openedTaskId, isFullView }) => {
                 </DetailsViewSC>
             );
         } else if (!isLoading && !tasksData.length) {
-            return <h2>No details to show</h2>;
+            return <Message>No details to show</Message>;
         } else {
             return <Loading />;
         }

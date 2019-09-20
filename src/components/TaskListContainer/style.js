@@ -6,6 +6,7 @@ import { getCurrentThemeColor, getStyleVariable } from '../../theme/helpers';
 
 
 export const TaskListContainerSC = styled.div`
+    position: relative;
 	background: ${getCurrentThemeColor('tertiary')};
 	height: calc(80vh - 180px);
 	overflow-y: auto;
