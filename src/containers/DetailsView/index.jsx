@@ -22,8 +22,6 @@ const DetailsView = ({ openedTaskId, isFullView }) => {
         if (!isLoading && openedTaskId !== null) {
             const task = tasksData.find(task => task.id === openedTaskId);
 
-            if (!task) return <Loading />;
-
             return (
                 <DetailsViewSC isFullView={isFullView}>
                     <DetailsViewHeader title={task.title} />
@@ -31,8 +29,10 @@ const DetailsView = ({ openedTaskId, isFullView }) => {
                     <DetailsViewFooter />
                 </DetailsViewSC>
             );
+        } else if (!isLoading && !tasksData.length) {
+            return <h2>No details to show</h2>;
         } else {
-            return null;
+            return <Loading />;
         }
     };
 

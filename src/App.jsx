@@ -1,6 +1,9 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import styled, { ThemeProvider, createGlobalStyle } from 'styled-components';
 
+// Actions
+import { actions } from './state/ducks/tasks';
 // Contexts
 import { ThemeContext } from './contexts/ThemeContext';
 // Helpers
@@ -23,10 +26,11 @@ function App() {
         theme: [currentTheme]
     } = useContext(ThemeContext);
 
-    const [openedTaskId, setOpenedTaskId] = useState(null);
-    const changeOpenedTaskId = e => setOpenedTaskId(getFromDataset(e, 'id'));
+    const { openedTaskId, isFullView } = useSelector(state => state.tasks);
 
-    const isFullView = openedTaskId !== null;
+    const dispatch = useDispatch();
+    const changeOpenedTaskId = e =>
+        dispatch(actions.openTask(getFromDataset(e, 'id')));
 
     return (
         <ThemeProvider theme={composeCurrentTheme(currentTheme)}>

@@ -14,7 +14,7 @@ import TaskListContainer from '../../components/TaskListContainer';
 
 const Sidebar = ({ isFullView, openedTaskId, changeOpenedTaskId }) => {
     const [
-        { tasksData, isLoading, error },
+        { tasksData, isLoading, error, isPristine },
         currentCategory,
         changeCategory
     ] = useGetTaskList();
@@ -34,6 +34,7 @@ const Sidebar = ({ isFullView, openedTaskId, changeOpenedTaskId }) => {
                 tasks={tasksData}
                 isLoading={isLoading}
                 error={error}
+                isPristine={isPristine}
                 openedTaskId={openedTaskId}
                 changeOpenedTaskId={changeOpenedTaskId}
             />
