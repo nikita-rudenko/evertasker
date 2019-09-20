@@ -44,7 +44,8 @@
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-react": "^7.14.3",
     "eslint-plugin-react-hooks": "^2.0.1",
-    "husky": "^3.0.5"
+    "husky": "^3.0.5",
+    "redux-devtools-extension": "^2.13.8"
   },
   "czConfig": {
     "path": "node_modules/cz-conventional-changelog"
