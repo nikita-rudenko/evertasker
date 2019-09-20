@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import { useSelector, shallowEqual } from 'react-redux';
 
@@ -13,7 +13,7 @@ import Message from '../../components/Message';
 
 
 
-const DetailsView = ({ openedTaskId, isFullView }) => {
+const DetailsView = memo(({ openedTaskId, isFullView }) => {
     const { isLoading, tasksData } = useSelector(
         state => state.tasks,
         shallowEqual
@@ -24,7 +24,7 @@ const DetailsView = ({ openedTaskId, isFullView }) => {
             const task = tasksData.find(task => task.id === openedTaskId);
 
             return (
-                <DetailsViewSC isFullView={isFullView}>
+                <DetailsViewSC key={openedTaskId} isFullView={isFullView}>
                     <DetailsViewHeader title={task.title} />
                     <DetailsViewBody task={task} />
                     <DetailsViewFooter />
@@ -38,10 +38,13 @@ const DetailsView = ({ openedTaskId, isFullView }) => {
     };
 
     return renderTask();
-};
+});
+
+DetailsView.displayName = 'MemoizedDetailsView';
 
 DetailsView.propTypes = {
-    openedTaskId: PropTypes.string
+    openedTaskId: PropTypes.string,
+    isFullView: PropTypes.bool
 };
 
 export default DetailsView;
