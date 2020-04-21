@@ -1,28 +1,23 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { useSelector, useDispatch, shallowEqual } from 'react-redux';
 
+// Custom hooks
+import useGetTaskList from '../../hooks/useGetTaskList';
+// Styled
+import { SidebarSC, TaskListHeaderSC, LogoContainerSC } from './style';
 // Components
 import Logo from '../../components/Logo';
 import TaskCategories from '../../components/TaskCategories';
 import TaskListContainer from '../../components/TaskListContainer';
-// Styles
-import { SidebarSC, TaskListHeaderSC, LogoContainerSC } from './style';
-// Actions
-import { actions } from '../../state/ducks/tasks';
 
 
 
 const Sidebar = ({ isFullView, openedTaskId, changeOpenedTaskId }) => {
-    const dispatch = useDispatch();
-    const { tasksData, error, isLoading } = useSelector(
-        state => state.tasks,
-        shallowEqual
-    );
-
-    useEffect(() => {
-        dispatch(actions.getTasks());
-    }, [dispatch]);
+    const [
+        { tasksData, isLoading, error, isPristine },
+        currentCategory,
+        changeCategory
+    ] = useGetTaskList();
 
     return (
         <SidebarSC isFullView={isFullView}>
@@ -30,12 +25,16 @@ const Sidebar = ({ isFullView, openedTaskId, changeOpenedTaskId }) => {
                 <LogoContainerSC>
                     <Logo />
                 </LogoContainerSC>
-                <TaskCategories />
+                <TaskCategories
+                    currentCategory={currentCategory}
+                    changeCategory={changeCategory}
+                />
             </TaskListHeaderSC>
             <TaskListContainer
                 tasks={tasksData}
                 isLoading={isLoading}
                 error={error}
+                isPristine={isPristine}
                 openedTaskId={openedTaskId}
                 changeOpenedTaskId={changeOpenedTaskId}
             />

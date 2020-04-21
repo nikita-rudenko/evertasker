@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import { useSelector, shallowEqual } from 'react-redux';
 
@@ -8,10 +8,12 @@ import { DetailsViewSC } from './style';
 import DetailsViewBody from '../../components/DetailsViewBody';
 import DetailsViewHeader from '../../components/DetailsViewHeader';
 import DetailsViewFooter from '../../components/DetailsViewFooter';
+import Loading from '../../components/Loading';
+import Message from '../../components/Message';
 
 
 
-const DetailsView = ({ openedTaskId, isFullView }) => {
+const DetailsView = memo(({ openedTaskId, isFullView }) => {
     const { isLoading, tasksData } = useSelector(
         state => state.tasks,
         shallowEqual
@@ -22,22 +24,27 @@ const DetailsView = ({ openedTaskId, isFullView }) => {
             const task = tasksData.find(task => task.id === openedTaskId);
 
             return (
-                <DetailsViewSC isFullView={isFullView}>
+                <DetailsViewSC key={openedTaskId} isFullView={isFullView}>
                     <DetailsViewHeader title={task.title} />
                     <DetailsViewBody task={task} />
                     <DetailsViewFooter />
                 </DetailsViewSC>
             );
+        } else if (!isLoading && !tasksData.length) {
+            return <Message>No details to show</Message>;
         } else {
-            return null;
+            return <Loading />;
         }
     };
 
     return renderTask();
-};
+});
+
+DetailsView.displayName = 'MemoizedDetailsView';
 
 DetailsView.propTypes = {
-    openedTaskId: PropTypes.string
+    openedTaskId: PropTypes.string,
+    isFullView: PropTypes.bool
 };
 
 export default DetailsView;

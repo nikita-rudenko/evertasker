@@ -6,6 +6,7 @@ import { TaskListContainerSC } from './style';
 // Components
 import Task from '../Task';
 import Loading from '../Loading';
+import Message from '../Message';
 
 
 
@@ -13,37 +14,40 @@ const TaskListContainer = ({
     tasks,
     isLoading,
     openedTaskId,
-    changeOpenedTaskId
+    changeOpenedTaskId,
+    isPristine
 }) => {
-    return (
-        <TaskListContainerSC>
-            {!isLoading && Array.isArray(tasks) ? (
-                tasks.map(task => {
-                    const { id, todo, assignees } = task;
+    const renderTaskList = () => {
+        if (!isLoading && tasks.length) {
+            return tasks.map(task => {
+                const { id, todo, assignees } = task;
 
-                    const assigneesStr = `${assignees[0]}${
-                        assignees.length - 1 > 0
-                            ? ` and ${assignees.length - 1} others`
-                            : ''
-                    }`;
+                const assigneesStr = `${assignees[0]}${
+                    assignees.length - 1 > 0
+                        ? ` and ${assignees.length - 1} others`
+                        : ''
+                }`;
 
-                    return (
-                        <Task
-                            openedTaskId={openedTaskId}
-                            changeOpenedTaskId={changeOpenedTaskId}
-                            key={id}
-                            hasTodo={todo !== undefined}
-                            assignees={assigneesStr}
-                            isOpened={openedTaskId === id}
-                            task={task}
-                        />
-                    );
-                })
-            ) : (
-                <Loading />
-            )}
-        </TaskListContainerSC>
-    );
+                return (
+                    <Task
+                        openedTaskId={openedTaskId}
+                        changeOpenedTaskId={changeOpenedTaskId}
+                        key={id}
+                        hasTodo={todo !== undefined}
+                        assignees={assigneesStr}
+                        isOpened={openedTaskId === id}
+                        task={task}
+                    />
+                );
+            });
+        } else if (!isLoading && !tasks.length && !isPristine) {
+            return <Message>No tasks</Message>;
+        } else {
+            return <Loading />;
+        }
+    };
+
+    return <TaskListContainerSC>{renderTaskList()}</TaskListContainerSC>;
 };
 
 TaskListContainer.propTypes = {
@@ -51,7 +55,8 @@ TaskListContainer.propTypes = {
     tasks: PropTypes.arrayOf(PropTypes.object),
     error: PropTypes.object,
     changeOpenedTaskId: PropTypes.func.isRequired,
-    openedTaskId: PropTypes.string
+    openedTaskId: PropTypes.string,
+    isPristine: PropTypes.bool
 };
 
 export default TaskListContainer;
